@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   require "open-uri"
+
   def new
     @letters = ('a'..'z').to_a.sample(10)
   end
@@ -18,9 +19,11 @@ class GamesController < ApplicationController
     valid2 = JSON.parse(URI.open("https://wagon-dictionary.herokuapp.com/#{word}").read)["found"]
 
     if valid1 && valid2
-      @response = "Congrats"
-    #elsif valid1 == false
-    #  @response = "Sorry cannot do this word"
+      @response = "Congrats !!!!!!"
+    elsif valid1 == false
+      @response = "Sorry cannot do this word"
+    else
+      @response = "Not an english word"
     end
   end
 end
